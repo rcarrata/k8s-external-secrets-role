@@ -1,0 +1,9 @@
+---
+- kind: Namespace
+  apiVersion: v1
+  metadata:
+    annotations:
+      openshift.io/description: {{ esecret_namespace }}
+      openshift.io/display-name: {{ esecret_namespace }}
+      openshift.io/node-selector: node-role.kubernetes.io/{{ esecret_nodeselector }}= 
+    name: {{ esecret_namespace }}

@@ -1,0 +1,6 @@
+---
+# tasks file for ocp4-post-external-secrets
+- include_tasks: aws_credentials.yml
+- include_tasks: external_secret_operator.yml
+- include_tasks: create_first_secret.yml
+

@@ -1,0 +1,10 @@
+---
+# vars file for ocp4-post-external-secrets
+esecret_namespace: external-secrets
+esecret_nodeselector: worker
+esecret_chart_version: 8.3.0
+esecret_replicas: 3
+kubeconfig: ~/.kube/config
+#esecret_aws_id: "FindmeinVault"
+#esecret_aws_key: "FindmeinVault"
+esecret_region: eu-west-1
