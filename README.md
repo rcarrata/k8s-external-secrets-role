@@ -3,8 +3,7 @@ External Secrets
 
 Kubernetes External Secrets allows you to use external secret management systems, like AWS Secrets Manager.
 
-This role permit to install external secrets on Openshift
-
+This role permit to install external secrets on Kubernetes / Openshift
 
 Requirements
 ===========
@@ -105,10 +104,9 @@ aws secretsmanager put-secret-value --secret-id $SECRET --secret-binary fileb://
 Role Variables
 --------------
 ```
-esecrets: true
 esecret_namespace: infra-external-secrets
-esecret_nodeselector: infra
-esecret_chart_version: 5.0.0
+esecret_nodeselector: worker
+esecret_chart_version: 8.3.0
 esecret_replicas: 3
 ```
 
@@ -125,16 +123,16 @@ Example Playbook
 ```
 - hosts: localhost
   connection: local
-  vars_files:
-    - vars/vars.yml
   tasks:
-    - role:
-      when:
-        - esecrets is defined
-        - esecrets != False
+    - role: rcarrata.k8s_external_secrets_role
+      vars:
+        esecret_chart_version: 8.3.0
+        esecret_region: eu-west-1
+        esecret_namespace: external-secrets
+        #esecret_aws_id: "INTO_VAULT"
+        #esecret_aws_key: "INTO_VAULT"
 ```
 
 More Info
 =========
 https://github.com/godaddy/kubernetes-external-secrets
-# k8s-external-secrets-role
